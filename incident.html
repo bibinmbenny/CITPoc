@@ -59,8 +59,8 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Incident Dashboard</a>
-                    <a href="resource.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Resource Dashboard</a>
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                   <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
                    <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
                 </div>
@@ -161,69 +161,49 @@
             </nav>
             <!-- Navbar End -->
 
+            <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
+                    <p><b>Incident Name: </b><span id="Incident_Name" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Description: </b><span id="Description" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Created Date: </b><span id="Created_Date" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Priority: </b><span id="Priority" style="color: rgb(224, 13, 13);"></span></p>
+                    <p><b>Assigned to: </b><span id="Assigned_to" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Reason: </b><span id="Reason" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Solution: </b><span id="Solution" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Completed Date: </b><span id="Completed_Date" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Rating: </b><span id="Rating" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Status: </b><span id="Status" style="color: rgb(69, 188, 204);"></span></p>
+                        <script>
+                            // Get the user ID from the URL
+                            var ID = new URLSearchParams(window.location.search).get('id');
+                            // Fetch the user details from the server
+                            //const res = await fetch(`http://localhost:8085/api/tutorials/${Issuedetail.id}`)
+                            fetch(`http://localhost:8085/api/tutorials?id=${ID}`)
+                                .then(response => response.json())
+                                .then(Issuedetail => {
+                                    // Set the user details in the HTML elements
+                                for (i=0;i<Issuedetail.length;i++)
+                                {
+                                    const  issue = Issuedetail[i];
+                                    if  (issue.ID===ID)
+                                    { 
+                                    document.getElementById('Incident_Name').textContent = issue.Incident_Name;
+                                    document.getElementById('Description').textContent = issue.Description;
+                                    document.getElementById('Created_Date').textContent = issue.Created_Date;
+                                    document.getElementById('Priority').textContent = issue.Priority;
+                                    document.getElementById('Assigned_to').textContent = issue.Assigned_to;
+                                    document.getElementById('Reason').textContent = issue.reason;
+                                    document.getElementById('Solution').textContent = issue.Solution;
+                                    document.getElementById('Completed_Date').textContent = issue.Completed_Date;
+                                    document.getElementById('Rating').textContent = issue.Rating;
+                                    document.getElementById('Status').textContent = issue.Status;
+                                }
+                            }
+                                    
+                                    
+                                });
+                        </script>
 
-            <!-- Form Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <h6 class="mb-4">Incident Details</h6>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">Incident ID : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">CIT-2345</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Incident Name : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Unable to process the master card payment</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Description : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">User is trying pay using by master card</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Created Date : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">22-03-2022</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Priority : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold; color: red;">P1</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Assigned to : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Mirshad</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Possible Reason : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Connection string is failing</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Suggested Solution : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Fixing the connection string</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Completed Date : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">22-03-2022</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Current Rating : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">2</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Status : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold; color: red;">Open</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Recommendation : </label>
-                                <button type="button" class="btn btn-success m-2">CIT-3487</button>
-                                <button type="button" class="btn btn-success m-2">CIT-3486</button>
-                                <button type="button" class="btn btn-success m-2">CIT-3488</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Form End -->
+            
 
 
             <!-- Widgets Start -->
