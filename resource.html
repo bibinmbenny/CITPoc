@@ -30,7 +30,16 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+    button {
+        background-color: #107bd3;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
@@ -59,9 +68,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                   <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                   <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Incident Dashboard</a>
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Resource Dashboard</a>
+                   <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="incident.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>View Incident</a>
+                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
                 </div>
             </nav>
@@ -161,66 +172,132 @@
             </nav>
             <!-- Navbar End -->
 
-<<<<<<< Updated upstream
-            <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
-=======
-            <div style="margin: 20px;">
-                <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
->>>>>>> Stashed changes
-                    <p><b>Incident Name: </b><span id="Incident_Name" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Description: </b><span id="Description" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Created Date: </b><span id="Created_Date" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Priority: </b><span id="Priority" style="color: rgb(224, 13, 13);"></span></p>
-                    <p><b>Assigned to: </b><span id="Assigned_to" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Reason: </b><span id="Reason" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Solution: </b><span id="Solution" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Completed Date: </b><span id="Completed_Date" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Rating: </b><span id="Rating" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Status: </b><span id="Status" style="color: rgb(69, 188, 204);"></span></p>
-                        <script>
-                            // Get the user ID from the URL
-                            var ID = new URLSearchParams(window.location.search).get('id');
-                            // Fetch the user details from the server
-<<<<<<< Updated upstream
-                            //const res = await fetch(`http://localhost:8085/api/tutorials/${Issuedetail.id}`)
-                            fetch(`http://localhost:8085/api/tutorials?id=${ID}`)
-=======
-                            fetch(`http://localhost:8085/api/incidents?id=${ID}`)
->>>>>>> Stashed changes
-                                .then(response => response.json())
-                                .then(Issuedetail => {
-                                    // Set the user details in the HTML elements
-                                for (i=0;i<Issuedetail.length;i++)
-                                {
-                                    const  issue = Issuedetail[i];
-<<<<<<< Updated upstream
-                                    if  (issue.ID===ID)
-=======
-                                    if  (issue.ID==ID)
->>>>>>> Stashed changes
-                                    { 
-                                    document.getElementById('Incident_Name').textContent = issue.Incident_Name;
-                                    document.getElementById('Description').textContent = issue.Description;
-                                    document.getElementById('Created_Date').textContent = issue.Created_Date;
-                                    document.getElementById('Priority').textContent = issue.Priority;
-                                    document.getElementById('Assigned_to').textContent = issue.Assigned_to;
-                                    document.getElementById('Reason').textContent = issue.reason;
-                                    document.getElementById('Solution').textContent = issue.Solution;
-                                    document.getElementById('Completed_Date').textContent = issue.Completed_Date;
-                                    document.getElementById('Rating').textContent = issue.Rating;
-                                    document.getElementById('Status').textContent = issue.Status;
-                                }
-                            }
-                                    
-                                    
-                                });
-                        </script>
 
-<<<<<<< Updated upstream
-=======
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Tickets</p>
+                                <h6 class="mb-0">1345</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Open Tickets</p>
+                                <h6 class="mb-0">234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">P1 Tickets</p>
+                                <h6 class="mb-0">58</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Ticket</p>
+                                <h6 class="mb-0">189</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
->>>>>>> Stashed changes
-            
+            <!-- Sale & Revenue End -->
+
+
+            <!-- Sales Chart Start -->
+            <!--<div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Worldwide Sales</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Salse & Revenue</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <canvas id="salse-revenue"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- Sales Chart End -->
+
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Resource Details</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <!--Importent to keep-->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Tickets In Hand</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <script>
+                            function fetchData() {
+                              fetch('/')
+                                .then(response => response.json())
+                                .then(data => {
+                                  const dataDiv = document.getElementById('_id');
+                                  dataDiv.innerText = JSON.stringify(data);
+                                })
+                                .catch(error => console.error(error));
+                            }
+                        </script>
+                        <script>
+                            fetch('http://localhost:8085/api/empl')
+                                .then(response => response.json())
+                                .then(data => {
+                                    let table = document.querySelector('#data-table tbody');
+                                    data.forEach(empdetails => {
+                                        let row = table.insertRow();
+                                        row.insertCell().innerHTML = empdetails.Employee_id;
+                                        row.insertCell().innerHTML = empdetails.Name;
+                                        row.insertCell().innerHTML = empdetails.WIP_Tickets;
+                                        var button = document.createElement("button");
+				                        button.innerHTML = "Details";
+				                        button.onclick = function() {
+                                            window.location.href = '/resourceManagement.html?id=' + empdetails.Employee_id;
+				                       };
+				                       var buttonCell = row.insertCell(3);
+				                       buttonCell.appendChild(button);
+                                    });
+                                });       
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
 
 
             <!-- Widgets Start -->

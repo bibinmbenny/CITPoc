@@ -59,8 +59,8 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                   <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Incident Dashboard</a>
+                    <a href="resource.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Resource Dashboard</a>
                    <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
                 </div>
@@ -161,54 +161,41 @@
             </nav>
             <!-- Navbar End -->
 
-<<<<<<< Updated upstream
-            <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
-=======
+
             <div style="margin: 20px;">
-                <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
->>>>>>> Stashed changes
-                    <p><b>Incident Name: </b><span id="Incident_Name" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Description: </b><span id="Description" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Created Date: </b><span id="Created_Date" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Priority: </b><span id="Priority" style="color: rgb(224, 13, 13);"></span></p>
-                    <p><b>Assigned to: </b><span id="Assigned_to" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Reason: </b><span id="Reason" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Solution: </b><span id="Solution" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Completed Date: </b><span id="Completed_Date" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Rating: </b><span id="Rating" style="color: rgb(69, 188, 204);"></span></p>
-                    <p><b>Status: </b><span id="Status" style="color: rgb(69, 188, 204);"></span></p>
+                <h1 style="color: blue; font-size: 28px; font-weight: bold;">Resource Details</h1>
+                    <p><b>Employee ID: </b><span id="Employee_id" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Name: </b><span id="Name" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Location: </b><span id="Location" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Project: </b><span id="Project" style="color: rgb(224, 13, 13);"></span></p>
+                    <p><b>Total Tickets in Hand: </b><span id="WIP_Tickets" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P1: </b><span id="P1" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P2: </b><span id="P2" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P3: </b><span id="P3" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Resolved Tickets: </b><span id="Resolved_Tickets" style="color: rgb(69, 188, 204);"></span></p>
                         <script>
                             // Get the user ID from the URL
                             var ID = new URLSearchParams(window.location.search).get('id');
                             // Fetch the user details from the server
-<<<<<<< Updated upstream
                             //const res = await fetch(`http://localhost:8085/api/tutorials/${Issuedetail.id}`)
-                            fetch(`http://localhost:8085/api/tutorials?id=${ID}`)
-=======
-                            fetch(`http://localhost:8085/api/incidents?id=${ID}`)
->>>>>>> Stashed changes
+                            fetch(`http://localhost:8085/api/empl?id=${ID}`)
                                 .then(response => response.json())
-                                .then(Issuedetail => {
+                                .then(empdetails => {
                                     // Set the user details in the HTML elements
-                                for (i=0;i<Issuedetail.length;i++)
+                                for (i=0;i<empdetails.length;i++)
                                 {
-                                    const  issue = Issuedetail[i];
-<<<<<<< Updated upstream
-                                    if  (issue.ID===ID)
-=======
-                                    if  (issue.ID==ID)
->>>>>>> Stashed changes
+                                    const  issue = empdetails[i];
+                                    if  (issue.Employee_id==ID)
                                     { 
-                                    document.getElementById('Incident_Name').textContent = issue.Incident_Name;
-                                    document.getElementById('Description').textContent = issue.Description;
-                                    document.getElementById('Created_Date').textContent = issue.Created_Date;
-                                    document.getElementById('Priority').textContent = issue.Priority;
-                                    document.getElementById('Assigned_to').textContent = issue.Assigned_to;
-                                    document.getElementById('Reason').textContent = issue.reason;
-                                    document.getElementById('Solution').textContent = issue.Solution;
-                                    document.getElementById('Completed_Date').textContent = issue.Completed_Date;
-                                    document.getElementById('Rating').textContent = issue.Rating;
-                                    document.getElementById('Status').textContent = issue.Status;
+                                    document.getElementById('Employee_id').textContent = issue.Employee_id;
+                                    document.getElementById('Name').textContent = issue.Name;
+                                    document.getElementById('Location').textContent = issue.Location;
+                                    document.getElementById('Project').textContent = issue.Project;
+                                    document.getElementById('WIP_Tickets').textContent = issue.WIP_Tickets;
+                                    document.getElementById('P1').textContent = issue.P1;
+                                    document.getElementById('P2').textContent = issue.P2;
+                                    document.getElementById('P3').textContent = issue.P3;
+                                    document.getElementById('Resolved_Tickets').textContent = issue.Resolved_Tickets;
                                 }
                             }
                                     
@@ -216,11 +203,7 @@
                                 });
                         </script>
 
-<<<<<<< Updated upstream
-=======
             </div>
->>>>>>> Stashed changes
-            
 
 
             <!-- Widgets Start -->
