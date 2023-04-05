@@ -161,12 +161,7 @@
             </nav>
             <!-- Navbar End -->
 
-<<<<<<< Updated upstream
             <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
-=======
-            <div style="margin: 20px;">
-                <h1 style="color: blue; font-size: 28px; font-weight: bold;">Incident Details</h1>
->>>>>>> Stashed changes
                     <p><b>Incident Name: </b><span id="Incident_Name" style="color: rgb(69, 188, 204);"></span></p>
                     <p><b>Description: </b><span id="Description" style="color: rgb(69, 188, 204);"></span></p>
                     <p><b>Created Date: </b><span id="Created_Date" style="color: rgb(69, 188, 204);"></span></p>
@@ -181,8 +176,8 @@
                             // Get the user ID from the URL
                             var ID = new URLSearchParams(window.location.search).get('id');
                             // Fetch the user details from the server
-                            //const res = await fetch(`http://citengin.azurewebsites.net/api/tutorials/${Issuedetail.id}`)
-                            fetch(`http://citengin.azurewebsites.net/api/tutorials?id=${ID}`)
+                            //const res = await fetch(`http://citengin.azurewebsites.net/api/incidents/${Issuedetail.id}`)
+                            fetch(`http://citengin.azurewebsites.net/api/incidents?id=${ID}`)
                                 .then(response => response.json())
                                 .then(Issuedetail => {
                                     // Set the user details in the HTML elements
@@ -208,10 +203,6 @@
                                 });
                         </script>
 
-<<<<<<< Updated upstream
-=======
-            </div>
->>>>>>> Stashed changes
             
 
 

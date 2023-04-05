@@ -177,7 +177,7 @@
                             // Get the user ID from the URL
                             var ID = new URLSearchParams(window.location.search).get('id');
                             // Fetch the user details from the server
-                            //const res = await fetch(`http://citengin.azurewebsites.net/api/tutorials/${Issuedetail.id}`)
+                            //const res = await fetch(`http://citengin.azurewebsites.net/api/empl/${Issuedetail.id}`)
                             fetch(`http://citengin.azurewebsites.net/api/empl?id=${ID}`)
                                 .then(response => response.json())
                                 .then(empdetails => {
