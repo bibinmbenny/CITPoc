@@ -291,11 +291,7 @@
                         <script>
                             function fetchData() {
                                 // Get the ID value from the input element
-<<<<<<< Updated upstream
                                 var id = document.getElementById("ID").value;
-=======
-                                var id = document.getElementById("_id").value;
->>>>>>> Stashed changes
                     
                                 // Use AJAX to fetch the data from the server
                                 var xhr = new XMLHttpRequest();
@@ -310,11 +306,7 @@
                             }
                         </script>
                         <script>
-<<<<<<< Updated upstream
-                            fetch('http://localhost:8085/api/tutorials')
-=======
-                            fetch('http://localhost:8085/api/incidents')
->>>>>>> Stashed changes
+                            fetch('http://citengin.azurewebsites.net/api/tutorials')
                                 .then(response => response.json())
                                 .then(data => {
                                     let table = document.querySelector('#data-table tbody');

@@ -181,23 +181,15 @@
                             // Get the user ID from the URL
                             var ID = new URLSearchParams(window.location.search).get('id');
                             // Fetch the user details from the server
-<<<<<<< Updated upstream
-                            //const res = await fetch(`http://localhost:8085/api/tutorials/${Issuedetail.id}`)
-                            fetch(`http://localhost:8085/api/tutorials?id=${ID}`)
-=======
-                            fetch(`http://localhost:8085/api/incidents?id=${ID}`)
->>>>>>> Stashed changes
+                            //const res = await fetch(`http://citengin.azurewebsites.net/api/tutorials/${Issuedetail.id}`)
+                            fetch(`http://citengin.azurewebsites.net/api/tutorials?id=${ID}`)
                                 .then(response => response.json())
                                 .then(Issuedetail => {
                                     // Set the user details in the HTML elements
                                 for (i=0;i<Issuedetail.length;i++)
                                 {
                                     const  issue = Issuedetail[i];
-<<<<<<< Updated upstream
                                     if  (issue.ID===ID)
-=======
-                                    if  (issue.ID==ID)
->>>>>>> Stashed changes
                                     { 
                                     document.getElementById('Incident_Name').textContent = issue.Incident_Name;
                                     document.getElementById('Description').textContent = issue.Description;
