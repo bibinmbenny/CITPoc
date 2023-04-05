@@ -30,7 +30,16 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+    button {
+        background-color: #107bd3;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
@@ -243,60 +252,48 @@
                     </div>
                     <!--Importent to keep-->
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="data-table">
                             <thead>
-                                <tr class="text-dark">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Tickets In Hand</th>
-                                    <th scope="col">P1 Issues</th>
-                                    <th scope="col">Closed Ticket</th>
-                                    <th scope="col">Status</th>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Tickets In Hand</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>emp-010</td>
-                                    <td>James</td>
-                                    <td>15</td>
-                                    <td>3</td>
-                                    <td>24</td>
-                                    <td><a class="btn btn-sm btn-primary" href="resourceManagement.html">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td>emp-112</td>
-                                    <td>Rajive</td>
-                                    <td>24</td>
-                                    <td>10</td>
-                                    <td>45</td>
-                                    <td><a class="btn btn-sm btn-primary" href="resourceManagement.html">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td>emp-202</td>
-                                    <td>Kumar</td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>14</td>
-                                    <td><a class="btn btn-sm btn-primary" href="resourceManagement.html">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td>emp-221</td>
-                                    <td>Anna</td>
-                                    <td>10</td>
-                                    <td>5</td>
-                                    <td>23</td>
-                                    <td><a class="btn btn-sm btn-primary" href="resourceManagement.html">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td>emp-401</td>
-                                    <td>Jack</td>
-                                    <td>15</td>
-                                    <td>9</td>
-                                    <td>114</td>
-                                    <td><a class="btn btn-sm btn-primary" href="resourceManagement.html">Detail</a></td>
-                                </tr>
                             </tbody>
                         </table>
+                        <script>
+                            function fetchData() {
+                              fetch('/')
+                                .then(response => response.json())
+                                .then(data => {
+                                  const dataDiv = document.getElementById('_id');
+                                  dataDiv.innerText = JSON.stringify(data);
+                                })
+                                .catch(error => console.error(error));
+                            }
+                        </script>
+                        <script>
+                            fetch('http://citengin.azurewebsites.net/api/empl')
+                                .then(response => response.json())
+                                .then(data => {
+                                    let table = document.querySelector('#data-table tbody');
+                                    data.forEach(empdetails => {
+                                        let row = table.insertRow();
+                                        row.insertCell().innerHTML = empdetails.Employee_id;
+                                        row.insertCell().innerHTML = empdetails.Name;
+                                        row.insertCell().innerHTML = empdetails.WIP_Tickets;
+                                        var button = document.createElement("button");
+				                        button.innerHTML = "Details";
+				                        button.onclick = function() {
+                                            window.location.href = '/resourceManagement.html?id=' + empdetails.Employee_id;
+				                       };
+				                       var buttonCell = row.insertCell(3);
+				                       buttonCell.appendChild(button);
+                                    });
+                                });       
+                        </script>
                     </div>
                 </div>
             </div>

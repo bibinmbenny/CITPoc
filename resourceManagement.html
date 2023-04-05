@@ -162,54 +162,48 @@
             <!-- Navbar End -->
 
 
-            <!-- Form Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <h6 class="mb-4">Resource Details</h6>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">Emp ID : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">emp-101</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Name : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Anna</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Total Resolved : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">105</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Ticket in Hand : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">22</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">P1 issues : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold; color: red;">10</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Tickets completed in this Month : 23</label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">Mirshad</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Average ticket fixing in a day : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">2</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Status : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold; color: rgb(4, 252, 128);">Good</label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">Current Rating : </label>
-                                <label for="formFileSm" class="form-label" style="font-weight: bold;">5</label>
-                            </div>
-                        </div>
+            <div style="margin: 20px;">
+                <h1 style="color: blue; font-size: 28px; font-weight: bold;">Resource Details</h1>
+                    <p><b>Employee ID: </b><span id="Employee_id" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Name: </b><span id="Name" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Location: </b><span id="Location" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Project: </b><span id="Project" style="color: rgb(224, 13, 13);"></span></p>
+                    <p><b>Total Tickets in Hand: </b><span id="WIP_Tickets" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P1: </b><span id="P1" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P2: </b><span id="P2" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>P3: </b><span id="P3" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Resolved Tickets: </b><span id="Resolved_Tickets" style="color: rgb(69, 188, 204);"></span></p>
+                        <script>
+                            // Get the user ID from the URL
+                            var ID = new URLSearchParams(window.location.search).get('id');
+                            // Fetch the user details from the server
+                            //const res = await fetch(`http://citengin.azurewebsites.net/api/tutorials/${Issuedetail.id}`)
+                            fetch(`http://citengin.azurewebsites.net/api/empl?id=${ID}`)
+                                .then(response => response.json())
+                                .then(empdetails => {
+                                    // Set the user details in the HTML elements
+                                for (i=0;i<empdetails.length;i++)
+                                {
+                                    const  issue = empdetails[i];
+                                    if  (issue.Employee_id==ID)
+                                    { 
+                                    document.getElementById('Employee_id').textContent = issue.Employee_id;
+                                    document.getElementById('Name').textContent = issue.Name;
+                                    document.getElementById('Location').textContent = issue.Location;
+                                    document.getElementById('Project').textContent = issue.Project;
+                                    document.getElementById('WIP_Tickets').textContent = issue.WIP_Tickets;
+                                    document.getElementById('P1').textContent = issue.P1;
+                                    document.getElementById('P2').textContent = issue.P2;
+                                    document.getElementById('P3').textContent = issue.P3;
+                                    document.getElementById('Resolved_Tickets').textContent = issue.Resolved_Tickets;
+                                }
+                            }
+                                    
+                                    
+                                });
+                        </script>
 
-                    </div>
-                </div>
             </div>
-            <!-- Form End -->
 
 
             <!-- Widgets Start -->
