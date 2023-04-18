@@ -173,9 +173,12 @@
                     <p><b>Completed Date: </b><span id="Completed_Date" style="color: rgb(69, 188, 204);"></span></p>
                     <p><b>Rating: </b><span id="Rating" style="color: rgb(69, 188, 204);"></span></p>
                     <p><b>Status: </b><span id="Status" style="color: rgb(69, 188, 204);"></span></p>
+                    <p><b>Suggestion Tickets:</b><span id="Suggestion" style="color: rgb(69, 188, 204);"></span></p>
                         <script>
                             // Get the user ID from the URL
                             var ID = new URLSearchParams(window.location.search).get('id');
+                            var issuedetail = {}
+                          //  var issuelist = []
                             // Fetch the user details from the server
                             fetch(`https://citengin.azurewebsites.net/api/incidents?id=${ID}`)
                                 .then(response => response.json())
@@ -186,6 +189,7 @@
                                     const  issue = Issuedetail[i];
                                     if  (issue.ID==ID)
                                     { 
+                                        issuedetail = issue;
                                     document.getElementById('Incident_Name').textContent = issue.Incident_Name;
                                     document.getElementById('Description').textContent = issue.Description;
                                     document.getElementById('Created_Date').textContent = issue.Created_Date;
@@ -198,6 +202,26 @@
                                     document.getElementById('Status').textContent = issue.Status;
                                 }
                             }
+                            const prepositions = ['of', 'the', 'but', 'in', 'to', 'is', 'for', 'with', 'on', 'at', 'from', 'by', 'about', 'as', 'into', 'like', 'through', 'after', 'over', 'between', 'out', 'against', 'during', 'without', 'before', 'under', 'around', 'among', '<', '>', ':'];
+                            const similar_id = []
+                            for (i=0;i<Issuedetail.length;i++){
+                                const detail = Issuedetail[i];
+                                if(detail.ID !== issuedetail.ID){
+                                    const cur_description = issuedetail.Description.toLowerCase().split(" ");
+                                    const find_description = detail.Description.toLowerCase().split(" ");
+                                    var matchingElements = cur_description.filter(function(item) {
+                                    return find_description.indexOf(item) > -1 && prepositions.indexOf(item) == -1
+                                    });
+                                    //console.log(matchingElements);
+                                    if(matchingElements.length >= 3){
+                                        similar_id.push(detail.ID)
+                                        console.log(matchingElements);
+                                    }
+                                    
+
+                                }
+                            }
+                            document.getElementById('Suggestion').textContent = similar_id;
                                     
                                     
                                 });
